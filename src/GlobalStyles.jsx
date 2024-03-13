@@ -3,17 +3,22 @@ import backgroundTexture from "/src/assets/paper-texture.jpg";
 
 export default createGlobalStyle`
     :root {
+        //rotating bg colors
+        --bg-teal: #36d8bd;        
+        --bg-lime: #b8cd2a;
+        --bg-neon-yellow: #ccff00;
+        --bg-yellow: #f7be0e;
+        --bg-orange: #ff9e3d;
+        --bg-red: #e44b36;
+
+        /* --bg-olive: #9aa05d; */
+        /* --bg-sage: #92a27e; */
+        /* --bg-mauve: #684a43; */
+        /* --bg-blue: #2f425e; */
+
         --off-white: #eff5ef;
         --gray: #76706a;
         --sage-gray: #8b9c99;
-        --sage: #92a27e;
-        --blue: #2f425e;
-        --teal: #06bf9f;
-        --lime: #b8cd2a;
-        --olive: #9aa05d;
-        --yellow: #f7be0e;
-        --red: #c34938;
-        --mauve: #684a43;
         --midnight-blue: #232326;        
         
         cursor: default;   
@@ -46,6 +51,18 @@ export default createGlobalStyle`
     }
     body {
         background-image: url(${backgroundTexture});
+    }
+    header {
+        width: 100vw;
+        height: 3rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: none;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        z-index: 10;
     }
     /* Hide scrollbar for Chrome, Safari, and Opera */
     body::-webkit-scrollbar, html::-webkit-scrollbar {
@@ -94,27 +111,6 @@ export default createGlobalStyle`
     }
     // background colour classes
     .bg-sage {
-        background-color: var(--sage);
-    }
-    .bg-blue {
-        background-color: var(--blue);
-    }
-    .bg-teal {
-        background-color: var(--teal);
-    }
-    .bg-lime {
-        background-color: var(--lime);
-    }
-    .bg-olive {
-        background-color: var(--olive);
-    }
-    .bg-yellow {
-        background-color: var(--yellow);
-    }
-    .bg-red {
-        background-color: var(--red);
-    }
-    .bg-mauve {
-        background-color: var(--mauve);
+        background-color: var(--bg-sage);
     }
 `;

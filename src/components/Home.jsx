@@ -3,19 +3,19 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 const Home = () => {
     const colorArray = [
-        'sage',
-        'olive',
-        'teal',
-        'lime',
-        'yellow',
-        'red',
-        'mauve'
+        'bg-neon-yellow',
+        'bg-teal',
+        'bg-lime',
+        'bg-yellow',
+        'bg-orange',
+        'bg-red'
     ];
 
-    const [backgroundColor, setBackgroundColor] = useState('yellow');
+    const [backgroundColor, setBackgroundColor] = useState('sage-gray');
 
     useEffect(() => {
         const colorChangeInterval = setInterval(() => {
+            //get different background color from colorArray at colorChangeInterval
             const getNewColor = () => {
                 let newColor;
                 do {
@@ -26,10 +26,11 @@ const Home = () => {
 
             setBackgroundColor(getNewColor());
 
-            // Clear interval on component unmount
-            return () => clearInterval(colorChangeInterval);
-
         }, 9000);
+
+        // Clear interval on component unmount
+        return () => clearInterval(colorChangeInterval);
+        
     }, [backgroundColor]);
 
     return(
@@ -46,7 +47,7 @@ const Home = () => {
 const HomeWrapper = styled.div`
     width: 100vw;
     height: 100vh;
-    opacity: 0.90;
+    opacity: 0.85;
 `
 
 export default Home;
