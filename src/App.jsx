@@ -5,15 +5,15 @@ import AnimatedRoutes from './components/AnimatedRoutes';
 function App() {
 
   return (
-    <>
+    <Router>
       <GlobalStyles />
-      <Router>
+      {/* <Router> */}
         <Header />
         <main>
           <AnimatedRoutes />
         </main>
-      </Router>
-    </>
+      {/* </Router> */}
+    </Router>
   )
 }
 

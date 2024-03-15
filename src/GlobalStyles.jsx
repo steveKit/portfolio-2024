@@ -64,6 +64,13 @@ export default createGlobalStyle`
         align-items: center;
         z-index: 10;
     }
+    a {
+        color: inherit; /* This makes the link use the text color of its parent */
+        text-decoration: none; /* Removes the underline from links */
+        font-family: inherit; /* Optional: ensures the link uses the parent's font styling */
+        font-size: inherit; /* Optional: ensures the link matches the parent's font size */
+    }
+
     /* Hide scrollbar for Chrome, Safari, and Opera */
     body::-webkit-scrollbar, html::-webkit-scrollbar {
         display: none;
