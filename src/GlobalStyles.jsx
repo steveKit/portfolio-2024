@@ -51,6 +51,9 @@ export default createGlobalStyle`
     }
     body {
         background-image: url(${backgroundTexture});
+        font-family: "Yanone Kaffeesatz", sans-serif;
+        color: var(--midnight-blue);
+        font-weight: 300;
     }
     header {
         width: 100vw;

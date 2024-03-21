@@ -4,15 +4,31 @@ import LinkItem from "../subcomponents/LinkItem";
 const Header = () => {
     const menuItems = [
         {
-            title: "Home",
+            title: "HOME",
             href: "/"
         },
         {
-            title: "About",
-            href: "/about"
+            title: "ABOUT",
+            href: "/"
+        },
+        {
+            title: "SKILLS",
+            href: "/"
+        },
+        {
+            title: "WORK",
+            href: "/"
+        },
+        {
+            title: "LEARNING",
+            href: "/"
+        },
+        {
+            title: "CONTACT",
+            href: "/"
         }
     ];
-    const [isActive, setIsActive] = useState('Home');
+    const [isActive, setIsActive] = useState('HOME');
 
     return(
         <header>
@@ -35,7 +51,8 @@ const Header = () => {
 
 const NavLinkContainer = styled.ul`
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
+    padding-top: 1rem;
     padding-right: 2rem;
 `
 

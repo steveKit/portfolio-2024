@@ -37,7 +37,7 @@ const Home = () => {
         <HomeWrapper
             as={motion.div}
             animate={{ backgroundColor: `var(--${backgroundColor})`}}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.3 }}
         >
 
         </HomeWrapper>
