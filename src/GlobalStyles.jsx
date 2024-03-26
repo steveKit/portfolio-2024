@@ -18,10 +18,13 @@ export default createGlobalStyle`
 
         --off-white: #eff5ef;
         --gray: #76706a;
+        --text-gray: #383838;
         --sage-gray: #8b9c99;
-        --midnight-blue: #232326;        
+        --midnight-blue: rgb(35, 35, 38);        
         
-        cursor: default;   
+        cursor: default;
+        
+        font-family: "Yanone Kaffeesatz", sans-serif;
     }
     
     html, body, div, span, applet, object, iframe,
@@ -51,9 +54,6 @@ export default createGlobalStyle`
     }
     body {
         background-image: url(${backgroundTexture});
-        font-family: "Yanone Kaffeesatz", sans-serif;
-        color: var(--midnight-blue);
-        font-weight: 300;
     }
     header {
         width: 100vw;
@@ -67,11 +67,22 @@ export default createGlobalStyle`
         align-items: center;
         z-index: 10;
     }
+    h1 {
+        font-size: 5rem;
+        font-weight: 700;
+        color: var(--off-white);
+        padding: 1rem 0;
+    }
+    p {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--text-gray);
+    }
     a {
-        color: inherit; /* This makes the link use the text color of its parent */
+        color: inherit;
         text-decoration: none; /* Removes the underline from links */
-        font-family: inherit; /* Optional: ensures the link uses the parent's font styling */
-        font-size: inherit; /* Optional: ensures the link matches the parent's font size */
+        font-family: inherit;
+        font-size: inherit;
     }
 
     /* Hide scrollbar for Chrome, Safari, and Opera */

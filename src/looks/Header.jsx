@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import LinkItem from "../subcomponents/LinkItem";
+import LinkItem from "../components/LinkItem";
 const Header = () => {
     const menuItems = [
         {
