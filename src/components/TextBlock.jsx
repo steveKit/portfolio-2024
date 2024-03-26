@@ -1,12 +1,16 @@
 import styled from "styled-components";
+import LearnMoreButton from "./LearnMoreButton";
 
 const TextBlock = ({title, body}) => {
     
     return (
-        <TextWrapper>
-            <h1>{title}</h1>
-            <p>{body}</p>
-        </TextWrapper>            
+        <>
+            <TextWrapper>
+                <h1>{title}</h1>
+                <p>{body}</p>
+            </TextWrapper> 
+            <LearnMoreButton />     
+        </>      
     )
 };
 

@@ -4,7 +4,7 @@ import backgroundTexture from "/src/assets/paper-texture.jpg";
 export default createGlobalStyle`
     :root {
         //rotating bg colors
-        --bg-teal: #36d8bd;        
+        --bg-teal: #3d9e8e;        
         --bg-lime: #b8cd2a;
         --bg-neon-yellow: #ccff00;
         --bg-yellow: #f7be0e;
@@ -18,13 +18,16 @@ export default createGlobalStyle`
 
         --off-white: #eff5ef;
         --gray: #76706a;
-        --text-gray: #383838;
+        --text-gray: #2b2b2b;
         --sage-gray: #8b9c99;
         --midnight-blue: rgb(35, 35, 38);        
         
         cursor: default;
         
-        font-family: "Yanone Kaffeesatz", sans-serif;
+        font-family: "Barlow", sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        font-style: normal;
     }
     
     html, body, div, span, applet, object, iframe,
@@ -68,21 +71,28 @@ export default createGlobalStyle`
         z-index: 10;
     }
     h1 {
-        font-size: 5rem;
-        font-weight: 700;
-        color: var(--off-white);
-        padding: 1rem 0;
+        font-size: 4rem;
+        font-weight: 800;
+        font-style: italic;
+        color: white;
+        margin: 1rem 0 1.5rem;
     }
     p {
-        font-size: 2rem;
+        font-size: 1.1rem;
         font-weight: 600;
         color: var(--text-gray);
     }
     a {
         color: inherit;
-        text-decoration: none; /* Removes the underline from links */
+        text-decoration: none;
         font-family: inherit;
         font-size: inherit;
+    }
+
+    button {
+        background: inherit;
+        color: inherit;
+        cursor: pointer;
     }
 
     /* Hide scrollbar for Chrome, Safari, and Opera */

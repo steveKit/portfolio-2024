@@ -7,9 +7,9 @@ import TextBlockIndexIndicator from "../components/TextBlockIndexIndicator";
 
 const Home = () => {
     const colorArray = [
-        'bg-neon-yellow',
+        // 'bg-neon-yellow',
         'bg-teal',
-        'bg-lime',
+        'sage-gray',
         'bg-yellow',
         'bg-orange',
         'bg-red'
@@ -76,10 +76,8 @@ const HomeWrapper = styled.section`
 `
 
 const IndicatorsWrapper = styled.div`
-    /* position: absolute;
-    bottom: 10%; */
     display: flex;
-    padding-top: 2rem;
+    padding-top: 1.5rem;
     gap: 1.5rem;    
 `
 

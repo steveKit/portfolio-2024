@@ -7,15 +7,20 @@ const TextBlockIndexIndicator = ({ isActive }) => {
     )
 };
 
-const Indicator = styled.div`
+const Indicator = styled.button`
     width: 100px;
     height: 8px;
     border-radius: 3px;
-    background-color: var(--off-white);
+    border: none;
+    background-color: white;
     opacity: 0.25;
 
     &.active-index {
-        opacity: 0.80;
+        opacity: 1;
+    }
+
+    &:hover {
+        cursor: pointer;
     }
 `;
 

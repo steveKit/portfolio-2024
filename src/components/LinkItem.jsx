@@ -50,10 +50,10 @@ const LinkItem = ({ title, href, isActive, setIsActive }) => {
                 layoutId='underline'
                 style={{
                     position: 'absolute',
-                    top: '46px',
+                    top: '64px',
                     width: `${linkWidth}px`,
                     height: '1px',
-                    backgroundColor: 'var(--off-white)',
+                    backgroundColor: 'white',
                 }}
                 transition={{ duration: 0.3 }}
             />
@@ -63,19 +63,18 @@ const LinkItem = ({ title, href, isActive, setIsActive }) => {
 };
 
 const StyledLi = styled.li`
-    color: var(--off-white);
+    color: white;
 
     /* Adds a slash after each link except the last one */
     &:not(:last-child)::after {
         content: "/";
         position: absolute;
-        translate: 9px;
-        font-size: 1.7rem;
+        translate: 14px;
     }
 `
 
 const StyledLink = styled(Link)`
-    font-size: 1.7rem;
+
 `
 
 export default LinkItem;
