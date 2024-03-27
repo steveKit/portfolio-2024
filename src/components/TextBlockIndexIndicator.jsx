@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { animationTimingOffset } from "../data/AnimationTimingVariables";
 
 const TextBlockIndexIndicator = ({ index, currentIndex, indicatorClickHandler, intervalDelay }) => {
 
     const isActive = index === currentIndex;
-    
-    const animationTimingOffset = 1;
     const animationInterval = intervalDelay - animationTimingOffset;
 
     const progressBarAnimation = {

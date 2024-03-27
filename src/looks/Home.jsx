@@ -4,6 +4,7 @@ import styled from "styled-components";
 import TextBlock from "../components/TextBlock";
 import textBlockContent from "../data/TextBlockContent.json"; 
 import TextBlockIndexIndicator from "../components/TextBlockIndexIndicator";
+import { intervalDelay } from "../data/AnimationTimingVariables";
 
 const Home = () => {
     const colorArray = [
@@ -14,9 +15,6 @@ const Home = () => {
         // 'bg-orange',
         'bg-red'
     ];
-
-    //interval delay in seconds
-    const intervalDelay = 10;
 
     const [backgroundColor, setBackgroundColor] = useState('sage-gray');
     const [currentIndex, setCurrentIndex] = useState(0);
