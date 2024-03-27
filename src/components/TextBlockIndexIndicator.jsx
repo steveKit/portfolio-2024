@@ -1,11 +1,19 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-const TextBlockIndexIndicator = ({ isActive, index, indicatorClickHandler, intervalDelay }) => {
+const TextBlockIndexIndicator = ({ index, currentIndex, indicatorClickHandler, intervalDelay }) => {
 
-    const indicatorVariants = {
-        inactive: { opacity: "0.75" },
-        active: {  opacity: "1" }
+    const isActive = index === currentIndex;
+    
+    const animationTimingOffset = 1;
+    const animationInterval = intervalDelay - animationTimingOffset;
+
+    const progressBarAnimation = {
+        hidden: { width: "0%" },
+        visible: {
+            width: "100%",
+            transition: { delay: (animationTimingOffset / 2), duration: animationInterval, ease: "linear" },
+        },
     };
 
     return (
@@ -13,12 +21,11 @@ const TextBlockIndexIndicator = ({ isActive, index, indicatorClickHandler, inter
             className={isActive ? "active-index" : "" }
             onClick={() => indicatorClickHandler(index)}
         >
-            <Timer
-                className={isActive ? "active-timer" : "" }
-
-                // animate={isActive ? "active" : "inactive"}
-                // variants={indicatorVariants}
-                // transition={{ duration: intervalDelay }}
+            <ProgressBar
+                className={isActive ? "active-index" : "" }
+                initial="hidden"
+                animate={isActive ? "visible" : "hidden"}
+                variants={progressBarAnimation}
             />
         </Indicator>          
     )
@@ -28,34 +35,33 @@ const Indicator = styled.button`
     width: 150px;
     height: 10px;
     border: none;
+    padding: 0;
     background-color: white;
     opacity: 0.25;
 
     &.active-index {
-        opacity: 0.5;
+        background-color: #00000040;
+        opacity: 0.66;
     }
 
-    &:hover {
+    &:hover:not(.active-index) {
         cursor: pointer;
         opacity: 0.5;
-    }
-
-    :first-child {
-        opacity: 1;
+        transition: opacity 200ms;
     }
 `;
 
-const Timer = styled(motion.div)`
+const ProgressBar = styled(motion.div)`
+    visibility: hidden;
 
-    display: none;
-
-    &.active-timer {
-        position: absolute;
+    &.active-index {
+        position: relative;
         top: 0;
         left: 0;
-        width: inherit;
-        height: inherit;
-        background-color: white;
+        width: 0%;
+        height: 100%;
+        background: white;
+        visibility: visible;
     }
     
 `

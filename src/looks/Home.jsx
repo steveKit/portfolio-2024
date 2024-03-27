@@ -71,7 +71,7 @@ const Home = () => {
                 {textBlockContent.map((_, index) => (
                     <TextBlockIndexIndicator
                         key={index}
-                        isActive={index === currentIndex}
+                        currentIndex={currentIndex}
                         index={index}
                         indicatorClickHandler={indicatorClickHandler}
                         intervalDelay={intervalDelay}
