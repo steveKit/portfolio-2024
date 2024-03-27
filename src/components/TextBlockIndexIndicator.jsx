@@ -5,6 +5,7 @@ import { animationTimingOffset } from "../data/AnimationTimingVariables";
 const TextBlockIndexIndicator = ({ index, currentIndex, indicatorClickHandler, intervalDelay }) => {
 
     const isActive = index === currentIndex;
+    console.log(isActive);
     const animationInterval = intervalDelay - animationTimingOffset;
 
     const progressBarAnimation = {

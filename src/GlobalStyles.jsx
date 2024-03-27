@@ -7,7 +7,7 @@ export default createGlobalStyle`
         --bg-teal: #3d9e8e;        
         --bg-lime: #b8cd2a;
         --bg-neon-yellow: #ccff00;
-        --bg-yellow: #f7be0e;
+        --bg-yellow: #d8a817;
         --bg-orange: #ff9e3d;
         --bg-red: #e44b36;
 
@@ -19,7 +19,7 @@ export default createGlobalStyle`
         --off-white: #eff5ef;
         --gray: #76706a;
         --text-gray: #242424;
-        --sage-gray: #8b9c99;
+        --sage-gray: #88a09b;
         --midnight-blue: rgb(35, 35, 38);     
         
         cursor: default;
