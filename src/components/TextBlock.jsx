@@ -17,8 +17,9 @@ const TextBlock = ({title, body}) => {
 const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 750px;
-    min-width: 33%;
+    width: 950px;
+    min-width: 40%;
+    max-width: 90%;
     text-align: center;
 `
 

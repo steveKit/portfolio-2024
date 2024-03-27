@@ -11,40 +11,54 @@ const Home = () => {
         'bg-teal',
         'sage-gray',
         'bg-yellow',
-        'bg-orange',
+        // 'bg-orange',
         'bg-red'
     ];
+
+    //interval delay in seconds
+    const intervalDelay = 10;
 
     const [backgroundColor, setBackgroundColor] = useState('sage-gray');
     const [currentIndex, setCurrentIndex] = useState(0);
     const [currentText, setCurrentText] = useState(textBlockContent[currentIndex]);
+    const [userTriggeredContentChange, setUserTriggeredContentChange] = useState(false);
+
+    //get different background color from colorArray
+    const getNewColor = () => {
+        let newColor;
+        do {
+            newColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+        } while (newColor === backgroundColor);
+        return newColor;
+    };
+
+    //cycle through textBlockContent
+    const cycleContent = (index) => {
+        const newIndex = index !== undefined ? index : (currentIndex + 1) % textBlockContent.length;
+        setCurrentText(textBlockContent[newIndex]);
+        setBackgroundColor(getNewColor());
+        setCurrentIndex(newIndex);
+    };
+    
+    //user triggered change clickHandler
+    const indicatorClickHandler = (index) => {
+        setUserTriggeredContentChange(true);
+        cycleContent(index);
+    };
+
 
     useEffect(() => {
-        const colorChangeInterval = setInterval(() => {
-            //get different background color from colorArray at colorChangeInterval
-            const getNewColor = () => {
-                let newColor;
-                do {
-                    newColor = colorArray[Math.floor(Math.random() * colorArray.length)];
-                } while (newColor === backgroundColor);
-                return newColor;
-            };
+        const contentChangeInterval = setInterval(() => {
+            if (userTriggeredContentChange) {
+                setUserTriggeredContentChange(false);
+            }
+            
+            cycleContent();
 
-            setBackgroundColor(getNewColor());
+        }, (intervalDelay * 1000));
 
-            // Update currentText to the next entry in textBlockContent
-            setCurrentIndex(prevIndex => {
-                const nextIndex = (prevIndex + 1) % textBlockContent.length;
-                setCurrentText(textBlockContent[nextIndex]);
-                return nextIndex;
-            });
-
-        }, 10000);
-
-        // Clear interval on component unmount
-        return () => clearInterval(colorChangeInterval);
-        
-    }, [backgroundColor]);
+        return () => clearInterval(contentChangeInterval);
+    }, [currentIndex, userTriggeredContentChange]);
 
     return(
         <HomeWrapper
@@ -58,6 +72,9 @@ const Home = () => {
                     <TextBlockIndexIndicator
                         key={index}
                         isActive={index === currentIndex}
+                        index={index}
+                        indicatorClickHandler={indicatorClickHandler}
+                        intervalDelay={intervalDelay}
                     />
                 ))}
             </IndicatorsWrapper>
@@ -78,7 +95,7 @@ const HomeWrapper = styled.section`
 const IndicatorsWrapper = styled.div`
     display: flex;
     padding-top: 1.5rem;
-    gap: 1.5rem;    
+    gap: 1.5rem;
 `
 
 export default Home;

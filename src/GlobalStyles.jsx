@@ -18,9 +18,9 @@ export default createGlobalStyle`
 
         --off-white: #eff5ef;
         --gray: #76706a;
-        --text-gray: #2b2b2b;
+        --text-gray: #242424;
         --sage-gray: #8b9c99;
-        --midnight-blue: rgb(35, 35, 38);        
+        --midnight-blue: rgb(35, 35, 38);     
         
         cursor: default;
         
