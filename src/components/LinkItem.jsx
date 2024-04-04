@@ -7,30 +7,36 @@ const LinkItem = ({ title, href, isActive, setIsActive }) => {
     const [isHovered, setIsHovered] = useState(false);
     //ref used to resize underline motion.div to the width of active menu item
     const linkRef = useRef(null);
-    const [linkWidth, setLinkWidth] = useState(0);
+    const [linkPosition, setLinkPosition] = useState({
+        width: 0,
+        top: 0,
+    });
 
     useEffect(() => {
-        const updateWidthAndPath = () => {
+        const updateLinkPosition = () => {
             if (linkRef.current) {
                 const newWidth = linkRef.current.offsetWidth;
-            
-                setLinkWidth(newWidth);
+                const newTop = linkRef.current.offsetTop + linkRef.current.offsetHeight + (linkRef.current.offsetHeight / 10);
+
+                setLinkPosition({ width: newWidth, top: newTop });
             }
         };
 
-        // Call initially and setup ResizeObserver
-        updateWidthAndPath();
-        const resizeObserver = new ResizeObserver(updateWidthAndPath);
+        updateLinkPosition();
+        const resizeObserver = new ResizeObserver(updateLinkPosition);
         if (linkRef.current) {
             resizeObserver.observe(linkRef.current);
         }
+
+        window.addEventListener('resize', updateLinkPosition);
 
         return () => {
             if (linkRef.current) {
                 resizeObserver.unobserve(linkRef.current);
             }
+            window.removeEventListener('resize', updateLinkPosition);
         };
-    }, [linkRef.current]);
+    }, []);
     
     return (
         <StyledLi>
@@ -50,12 +56,12 @@ const LinkItem = ({ title, href, isActive, setIsActive }) => {
                 layoutId='underline'
                 style={{
                     position: 'absolute',
-                    top: '64px',
-                    width: `${linkWidth}px`,
+                    top: `${linkPosition.top}px`,
+                    width: `${linkPosition.width}px`,
                     height: '1px',
                     backgroundColor: 'white',
                 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.2 }}
             />
             )}
         </StyledLi>            
@@ -69,7 +75,7 @@ const StyledLi = styled.li`
     &:not(:last-child)::after {
         content: "/";
         position: absolute;
-        translate: 14px;
+        translate: 7px;
     }
 `
 

@@ -1,3 +1,6 @@
+//initial header animation delay
+const headerDelay = 1;
+
 //timing for new text block in home component
 const intervalDelay = 10;
 
@@ -5,6 +8,7 @@ const intervalDelay = 10;
 const animationTimingOffset = 1;
 
 export {
+    headerDelay,
     intervalDelay,
     animationTimingOffset
 };

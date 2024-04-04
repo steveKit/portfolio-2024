@@ -1,25 +1,24 @@
 import { createGlobalStyle } from "styled-components";
-import backgroundTexture from "/src/assets/paper-texture.jpg";
 
 export default createGlobalStyle`
     :root {
         //rotating bg colors
+        --bg-sage-gray: #88a09b;
         --bg-teal: #3d9e8e;        
-        --bg-lime: #b8cd2a;
-        --bg-neon-yellow: #ccff00;
         --bg-yellow: #d8a817;
-        --bg-orange: #ff9e3d;
         --bg-red: #e44b36;
+        --bg-dull-green: #898f78;
+        --bg-brown: #70564a;
+        --bg-lavender: #8e9fac;
 
-        /* --bg-olive: #9aa05d; */
+        /* --bg-olive: #7f8169; */
         /* --bg-sage: #92a27e; */
         /* --bg-mauve: #684a43; */
         /* --bg-blue: #2f425e; */
 
         --off-white: #eff5ef;
         --gray: #76706a;
-        --text-gray: #242424;
-        --sage-gray: #88a09b;
+        --text-gray: #1f1f1f;
         --midnight-blue: rgb(35, 35, 38);     
         
         cursor: default;
@@ -55,9 +54,6 @@ export default createGlobalStyle`
     footer, header, hgroup, menu, nav, section {
         display: block;
     }
-    body {
-        background-image: url(${backgroundTexture});
-    }
     header {
         width: 100vw;
         height: 3rem;
@@ -67,8 +63,11 @@ export default createGlobalStyle`
         background: none;
         display: flex;
         justify-content: flex-end;
-        align-items: center;
         z-index: 10;
+
+        @media (max-width: 1000px) {
+            justify-content: center;
+        }
     }
     h1 {
         font-size: 4rem;
@@ -76,9 +75,13 @@ export default createGlobalStyle`
         font-style: italic;
         color: white;
         margin: 1rem 0 1.5rem;
+
+        @media (max-width: 750px) {
+            font-size: 2rem;
+        }
     }
     p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         font-weight: 600;
         color: var(--text-gray);
     }

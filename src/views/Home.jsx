@@ -1,26 +1,26 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import TextBlock from "../components/TextBlock";
 import textBlockContent from "../data/TextBlockContent.json"; 
 import TextBlockIndexIndicator from "../components/TextBlockIndexIndicator";
-import { intervalDelay } from "../data/AnimationTimingVariables";
-
+import { intervalDelay } from "../animations/AnimationTimingVariables";
 const Home = () => {
     const colorArray = [
-        // 'bg-neon-yellow',
         'bg-teal',
-        'sage-gray',
+        // 'bg-dull-green',
         'bg-yellow',
-        // 'bg-orange',
+        // 'bg-brown',
+        'bg-lavender',
         'bg-red'
     ];
 
-    const [backgroundColor, setBackgroundColor] = useState('sage-gray');
+    const [backgroundColor, setBackgroundColor] = useState('bg-teal');
     const [currentIndex, setCurrentIndex] = useState(0);
     const [currentText, setCurrentText] = useState(textBlockContent[currentIndex]);
+    //for user triggered content cycle in useeffect
     const [userTriggeredContentChange, setUserTriggeredContentChange] = useState(false);
-
+ 
     //get different background color from colorArray
     const getNewColor = () => {
         let newColor;
@@ -46,6 +46,7 @@ const Home = () => {
 
 
     useEffect(() => {
+
         const contentChangeInterval = setInterval(() => {
             if (userTriggeredContentChange) {
                 setUserTriggeredContentChange(false);
@@ -60,11 +61,21 @@ const Home = () => {
 
     return(
         <HomeWrapper
-            as={motion.div}
             animate={{ backgroundColor: `var(--${backgroundColor})`}}
             transition={{ duration: 0.3 }}
+            layout="textContentChange"
         >
-            <TextBlock title={currentText.title} body={currentText.content} />
+            <AnimatePresence>
+                {currentText && (
+                    <TextBlock
+                        key={currentIndex}
+                        title={currentText.title}
+                        body={currentText.content}
+                        href={currentText.href}
+                    />
+                )}
+            </AnimatePresence>
+
             <IndicatorsWrapper>
                 {textBlockContent.map((_, index) => (
                     <TextBlockIndexIndicator
@@ -72,7 +83,6 @@ const Home = () => {
                         currentIndex={currentIndex}
                         index={index}
                         indicatorClickHandler={indicatorClickHandler}
-                        intervalDelay={intervalDelay}
                     />
                 ))}
             </IndicatorsWrapper>
@@ -80,10 +90,10 @@ const Home = () => {
     )
 }
 
-const HomeWrapper = styled.section`
+const HomeWrapper = styled(motion.section)`
     width: 100vw;
     height: 100vh;
-    opacity: 0.85;
+    opacity: 0.80;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,6 +102,7 @@ const HomeWrapper = styled.section`
 
 const IndicatorsWrapper = styled.div`
     display: flex;
+    flex-flow: row wrap;
     padding-top: 1.5rem;
     gap: 1.5rem;
 `

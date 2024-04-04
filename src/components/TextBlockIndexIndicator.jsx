@@ -1,37 +1,37 @@
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { animationTimingOffset } from "../data/AnimationTimingVariables";
+import { progressBarVariants } from "../animations/AnimationVariants";
 
-const TextBlockIndexIndicator = ({ index, currentIndex, indicatorClickHandler, intervalDelay }) => {
-
+const TextBlockIndexIndicator = ({ index, currentIndex, indicatorClickHandler }) => {
     const isActive = index === currentIndex;
-    console.log(isActive);
-    const animationInterval = intervalDelay - animationTimingOffset;
+    const [startAnimation, setStartAnimation] = useState(false);
 
-    const progressBarAnimation = {
-        hidden: { width: "0%" },
-        visible: {
-            width: "100%",
-            transition: { delay: (animationTimingOffset / 2), duration: animationInterval, ease: "linear" },
-        },
-    };
+    useEffect(() => {
+        if (isActive) {
+            setStartAnimation(true);
+        } else {
+            setStartAnimation(false);
+        }
+    }, [isActive]);
 
     return (
         <Indicator
             className={isActive ? "active-index" : "" }
+            layout="textContentChange"
             onClick={() => indicatorClickHandler(index)}
         >
             <ProgressBar
                 className={isActive ? "active-index" : "" }
-                initial="hidden"
-                animate={isActive ? "visible" : "hidden"}
-                variants={progressBarAnimation}
+                animate={startAnimation ? "animate" : "initial"}
+                layout="textContentChange"
+                variants={progressBarVariants}
             />
-        </Indicator>          
+        </Indicator>         
     )
 };
 
-const Indicator = styled.button`
+const Indicator = styled(motion.button)`
     width: 150px;
     height: 10px;
     border: none;
@@ -53,13 +53,12 @@ const Indicator = styled.button`
 
 const ProgressBar = styled(motion.div)`
     visibility: hidden;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
 
     &.active-index {
-        position: relative;
-        top: 0;
-        left: 0;
-        width: 0%;
-        height: 100%;
         background: white;
         visibility: visible;
     }

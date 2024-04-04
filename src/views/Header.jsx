@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import LinkItem from "../components/LinkItem";
+import { headerDelay } from "../animations/AnimationTimingVariables";
 const Header = () => {
     const menuItems = [
         {
@@ -33,7 +35,16 @@ const Header = () => {
     return(
         <header>
             <nav>
-                <NavLinkContainer>
+                <NavLinkContainer
+                    className="full-width"
+                    initial={{ x: 800 }}
+                    animate={{
+                        x: 0,
+                        transition: {
+                            delay: headerDelay,
+                        },
+                    }}
+                >
                     {menuItems.map((item, index) => (
                         <LinkItem
                             key={item.title + index}
@@ -49,11 +60,12 @@ const Header = () => {
     )
 }
 
-const NavLinkContainer = styled.ul`
+const NavLinkContainer = styled(motion.ul)`
     display: flex;
-    gap: 1.5rem;
-    padding-top: 1rem;
-    padding-right: 2rem;
+    flex-flow: row wrap;
+    gap: 1rem;
+    row-gap: 0.5rem;
+    padding: 1rem 2rem 0;
 `
 
 export default Header;

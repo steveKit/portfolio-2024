@@ -1,18 +1,22 @@
 [
     {
         "title": "Wow! Interesting!",
-        "content": "Will I bore you? No! Me interesting -- proof to come! Mind will be shattered!"
+        "content": "Will I bore you? No! Me interesting -- proof to come! Mind will be shattered!",
+        "href": "/about"
     },
     {
         "title": "Hire Me!",
-        "content": "Visiting a website without hiring it's creator is widely considered to be a faux pas. You still have time to avoid becoming a pariah."
+        "content": "Visiting a website without hiring it's creator is widely considered to be a faux pas. You still have time to avoid becoming a pariah.",
+        "href": "/contact"
     },
     {
         "title": "I'm Ten Feet Tall and Make All Of My Own Pants!",
-        "content": "I'm so tall that no pants manufacturer makes pants in my size. As they say, 'Become the pants manufacturer the world denies you'."
+        "content": "I'm so tall that no pants manufacturer makes pants in my size. As they say, 'Become the pants manufacturer the world denies you'.",
+        "href": "/skills"
     },
     {
         "title": "Do You Remember ALF?!",
-        "content": "'ALF' is a sitcom that aired from 1986 to 1990, centered around a wisecracking alien named Gordon Shumway from the planet Melmac who crash-lands into the garage of the Tanner family. The show follows ALF's comedic endeavors as he hides from government authorities, adapts to Earthly customs, including his ongoing but thwarted desire to eat the Tanner's cat, and forms a unique bond with the Tanner family despite the chaos he often causes. Its blend of humor, family dynamics, and the challenges of harboring an extraterrestrial became a staple of 1980s television."
+        "content": "'ALF' is a sitcom that aired from 1986 to 1990, centered around a wisecracking alien named Gordon Shumway from the planet Melmac who crash-lands into the garage of the Tanner family. The show follows ALF's comedic endeavors as he hides from government authorities, adapts to Earthly customs, including his ongoing but thwarted desire to eat the Tanner's cat, and forms a unique bond with the Tanner family despite the chaos he often causes. Its blend of humor, family dynamics, and the challenges of harboring an extraterrestrial became a staple of 1980s television.",
+        "href": "/work"
     }
 ]
