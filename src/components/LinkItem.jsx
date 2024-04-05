@@ -8,8 +8,8 @@ const LinkItem = ({ title, href, isActive, setIsActive }) => {
     //ref used to resize underline motion.div to the width of active menu item
     const linkRef = useRef(null);
     const [linkPosition, setLinkPosition] = useState({
-        width: 0,
-        top: 0,
+        width: null,
+        top: null,
     });
 
     useEffect(() => {
@@ -81,6 +81,10 @@ const StyledLi = styled.li`
 
 const StyledLink = styled(Link)`
 
+    
+    @media (max-width: 300px) {
+        font-size: 0.8rem;
+    }
 `
 
 export default LinkItem;

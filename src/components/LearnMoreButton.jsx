@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import AnimatedItemContainer from "./AnimatedItemContainer";
+import { learnMoreButtonVariants } from "../animations/AnimationVariants"; 
 
 const LearnMoreButton = ({ href }) => {
     
     return (
         // <AnimatedItemContainer>
             <Button
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ type: "spring" }}
-                exit={{ y: -100, opacity: 0 }}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                variants={learnMoreButtonVariants}
                 to={href}
             >
                 Learn More
@@ -20,13 +20,24 @@ const LearnMoreButton = ({ href }) => {
 };
 
 const Button = styled(motion.button)`
-    margin-top: 1.5rem;
+    margin: 2.5rem 0;
     font-size: 1rem;
     width: 250px;
+    max-width: 95%;
     padding: 5px 15px;
     color: white;
     border: 2px solid white;
     z-index: -10;
+
+    @media (max-height: 700px) {
+        margin-top: 2rem;
+    }
+
+    @media (max-width: 300px) {
+        margin-top: 1rem;
+        font-size: 0.85rem;
+    }
+
 `
 
 export default LearnMoreButton;

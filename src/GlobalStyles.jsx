@@ -77,13 +77,28 @@ export default createGlobalStyle`
         margin: 1rem 0 1.5rem;
 
         @media (max-width: 750px) {
-            font-size: 2rem;
+            font-size: 2.5rem;
+        }
+ 
+        @media (max-height: 700px) {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 2.2rem;
+        }
+
+        @media (max-width: 300px) {
+            margin-top: 1.5rem;
+            font-size: 1.8rem;
         }
     }
     p {
         font-size: 1.2rem;
         font-weight: 600;
         color: var(--text-gray);
+
+        @media (max-width: 750px) {
+            font-size: 1rem;
+        }
     }
     a {
         color: inherit;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import LinkItem from "../components/LinkItem";
-import { headerDelay } from "../animations/AnimationTimingVariables";
+import { initialLoadVariants } from "../animations/AnimationVariants";
 const Header = () => {
     const menuItems = [
         {
@@ -30,6 +30,7 @@ const Header = () => {
             href: "/"
         }
     ];
+
     const [isActive, setIsActive] = useState('HOME');
 
     return(
@@ -37,13 +38,9 @@ const Header = () => {
             <nav>
                 <NavLinkContainer
                     className="full-width"
-                    initial={{ x: 800 }}
-                    animate={{
-                        x: 0,
-                        transition: {
-                            delay: headerDelay,
-                        },
-                    }}
+                    initial="initial"
+                    animate="animate"
+                    variants={initialLoadVariants}
                 >
                     {menuItems.map((item, index) => (
                         <LinkItem
@@ -66,6 +63,10 @@ const NavLinkContainer = styled(motion.ul)`
     gap: 1rem;
     row-gap: 0.5rem;
     padding: 1rem 2rem 0;
+
+    @media (max-width: 300px) {
+        padding: 1rem;
+    }
 `
 
 export default Header;

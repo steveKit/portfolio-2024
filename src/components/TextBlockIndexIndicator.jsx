@@ -18,13 +18,11 @@ const TextBlockIndexIndicator = ({ index, currentIndex, indicatorClickHandler })
     return (
         <Indicator
             className={isActive ? "active-index" : "" }
-            layout="textContentChange"
             onClick={() => indicatorClickHandler(index)}
         >
             <ProgressBar
                 className={isActive ? "active-index" : "" }
                 animate={startAnimation ? "animate" : "initial"}
-                layout="textContentChange"
                 variants={progressBarVariants}
             />
         </Indicator>         
@@ -33,11 +31,13 @@ const TextBlockIndexIndicator = ({ index, currentIndex, indicatorClickHandler })
 
 const Indicator = styled(motion.button)`
     width: 150px;
-    height: 10px;
+    height: 12px;
     border: none;
     padding: 0;
+    margin: 1rem;
     background-color: white;
     opacity: 0.25;
+    transition: all 1000ms ease-out;
 
     &.active-index {
         background-color: #00000040;
@@ -47,7 +47,12 @@ const Indicator = styled(motion.button)`
     &:hover:not(.active-index) {
         cursor: pointer;
         opacity: 0.5;
-        transition: opacity 200ms;
+        transition: opacity 300ms;
+    }
+
+    @media (max-width: 900px) {
+        max-width: 20%;
+        margin: 2.5%;
     }
 `;
 
@@ -57,6 +62,7 @@ const ProgressBar = styled(motion.div)`
     top: 0;
     left: 0;
     height: 100%;
+    width: 0%;
 
     &.active-index {
         background: white;

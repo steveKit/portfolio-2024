@@ -4,7 +4,9 @@ import styled from "styled-components";
 import TextBlock from "../components/TextBlock";
 import textBlockContent from "../data/TextBlockContent.json"; 
 import TextBlockIndexIndicator from "../components/TextBlockIndexIndicator";
-import { intervalDelay } from "../animations/AnimationTimingVariables";
+import { intervalDelay, textBlockAnimationInterval } from "../animations/AnimationTimingVariables";
+import { initialLoadVariants } from "../animations/AnimationVariants";
+
 const Home = () => {
     const colorArray = [
         'bg-teal',
@@ -62,7 +64,7 @@ const Home = () => {
     return(
         <HomeWrapper
             animate={{ backgroundColor: `var(--${backgroundColor})`}}
-            transition={{ duration: 0.3 }}
+            transition={{ delay: (textBlockAnimationInterval / 2), duration: 0.3 }}
             layout="textContentChange"
         >
             <AnimatePresence>
@@ -75,17 +77,22 @@ const Home = () => {
                     />
                 )}
             </AnimatePresence>
-
-            <IndicatorsWrapper>
-                {textBlockContent.map((_, index) => (
-                    <TextBlockIndexIndicator
-                        key={index}
-                        currentIndex={currentIndex}
-                        index={index}
-                        indicatorClickHandler={indicatorClickHandler}
-                    />
-                ))}
-            </IndicatorsWrapper>
+            <AnimatePresence>
+                <IndicatorsWrapper
+                    initial="initial"
+                    animate="animate"
+                    variants={initialLoadVariants}
+                >
+                    {textBlockContent.map((_, index) => (
+                        <TextBlockIndexIndicator
+                            key={index}
+                            currentIndex={currentIndex}
+                            index={index}
+                            indicatorClickHandler={indicatorClickHandler}
+                        />
+                    ))}
+                </IndicatorsWrapper>
+            </AnimatePresence>
         </HomeWrapper>
     )
 }
@@ -100,11 +107,12 @@ const HomeWrapper = styled(motion.section)`
     justify-content: center;
 `
 
-const IndicatorsWrapper = styled.div`
+const IndicatorsWrapper = styled(motion.div)`
+    position: absolute;
     display: flex;
     flex-flow: row wrap;
-    padding-top: 1.5rem;
-    gap: 1.5rem;
+    bottom: 5%;
+    margin: 0 5%;
 `
 
 export default Home;
