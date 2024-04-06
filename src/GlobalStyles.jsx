@@ -6,7 +6,7 @@ export default createGlobalStyle`
         --bg-sage-gray: #88a09b;
         --bg-teal: #3d9e8e;        
         --bg-yellow: #d8a817;
-        --bg-red: #e44b36;
+        --bg-red: #d15342;
         --bg-dull-green: #898f78;
         --bg-brown: #70564a;
         --bg-lavender: #8e9fac;
