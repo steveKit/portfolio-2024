@@ -28,7 +28,7 @@ const TextWrapper = styled(motion.div)`
     flex-direction: column;
     align-items: center;
     position: absolute;
-    width: 950px;
+    width: 750px;
     min-width: 40%;
     max-width: 85%;
     text-align: center;

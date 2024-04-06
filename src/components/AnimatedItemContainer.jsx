@@ -15,7 +15,7 @@ const AnimatedItemContainer = ({ component, content, tag, href }) => {
 const ItemContainer = styled.div`
     width: fit-content;
     height: fit-content;
-    padding: 0.1% 0.7%;
+    padding: 0.1rem 0.5%;
     overflow: hidden;
 `
 

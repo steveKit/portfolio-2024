@@ -37,7 +37,7 @@ const learmMoreButtonVariants = {
     animate: {
         y: 0,    
         transition: {
-            delay: textBlockAnimationInterval,
+            delay: textBlockAnimationInterval + 0.5,
             duration: (textBlockAnimationInterval / 2),
             type: "tween" },
     },
@@ -55,12 +55,13 @@ const textTopEntryVariants = (delayModifier) => ({
         y: "0%",    
         transition: {
             delay: (textBlockAnimationInterval + delayModifier),
-            duration: (textBlockAnimationInterval / 2),
+            duration: ((textBlockAnimationInterval - delayModifier) / 2),
             type: "tween" },
     },
     exit: {
         y: "200%",
         transition: {
+            delay: delayModifier,
             duration: (textBlockAnimationInterval/ 2),
             type: "tween" },
     },
@@ -72,12 +73,13 @@ const textRightEntryVariants = (delayModifier) => ({
         x: "0%",    
         transition: {
             delay: (textBlockAnimationInterval + delayModifier),
-            duration: (textBlockAnimationInterval / 2),
+            duration: ((textBlockAnimationInterval - delayModifier) / 2),
             type: "tween" },
     },
     exit: {
         x: "200%",
         transition: {
+            delay: delayModifier,
             duration: (textBlockAnimationInterval / 2),
             type: "tween" },
     },
@@ -89,12 +91,13 @@ const textBottomEntryVariants = (delayModifier) => ({
         y: "0%",    
         transition: {
             delay: (textBlockAnimationInterval + delayModifier),
-            duration: (textBlockAnimationInterval / 2),
+            duration: ((textBlockAnimationInterval - delayModifier) / 2),
             type: "tween" },
     },
     exit: {
         y: "200%",
         transition: {
+            delay: delayModifier,
             duration: (textBlockAnimationInterval / 2),
             type: "tween" },
     },
@@ -105,12 +108,13 @@ const textLeftEntryVariants = (delayModifier) => ({
         x: "0%",    
         transition: {
             delay: (textBlockAnimationInterval + delayModifier),
-            duration: (textBlockAnimationInterval / 2),
+            duration: ((textBlockAnimationInterval - delayModifier) / 2),
             type: "tween" },
     },
     exit: {
         x: "-200%",
         transition: {
+            delay: delayModifier,
             duration: (textBlockAnimationInterval / 2),
             type: "tween" },
     },
