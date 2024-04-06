@@ -47,7 +47,7 @@ const LinkItem = ({ title, href, isActive, setIsActive }) => {
                 onTouchEnd={() => setIsHovered(false)}           
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                onClick={() => setIsActive(title)}
+                onClick={() => isActive === title ? null : setIsActive(title)}
             >
                 {title}
             </StyledLink>

@@ -31,8 +31,8 @@ const Button = styled(motion.button)`
         margin-top: 2rem;
     }
 
-    @media (max-width: 300px) {
-        margin-top: 1rem;
+    @media (max-width: 600px) {
+        margin-top: 1.3rem;
         font-size: 0.85rem;
     }
 

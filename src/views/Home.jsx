@@ -10,9 +10,7 @@ import { initialLoadVariants } from "../animations/AnimationVariants";
 const Home = () => {
     const colorArray = [
         'bg-teal',
-        // 'bg-dull-green',
         'bg-yellow',
-        // 'bg-brown',
         'bg-lavender',
         'bg-red'
     ];
