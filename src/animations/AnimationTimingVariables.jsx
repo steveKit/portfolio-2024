@@ -2,7 +2,7 @@
 const textBlockDisplayInterval = 10;
 
 //duration textblock layout animation - total length, in + out
-const textBlockAnimationInterval = 0.7;
+const textBlockAnimationInterval = 1;
 
 //do not change values of the timers below --
 
@@ -13,7 +13,7 @@ const progressBarDelay = animationTimingOffset;
 const animationInterval = textBlockDisplayInterval - animationTimingOffset;
 
 //initial header & index indicator animation delay
-const initialDelay = textBlockAnimationInterval + 0.4;
+const initialDelay = textBlockAnimationInterval;
 
 
 

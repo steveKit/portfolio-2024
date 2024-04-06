@@ -18,7 +18,7 @@ const TextBlockIndexIndicator = ({ index, currentIndex, indicatorClickHandler })
     return (
         <Indicator
             className={isActive ? "active-index" : "" }
-            onClick={() => indicatorClickHandler(index)}
+            onClick={() => isActive ? null : indicatorClickHandler(index)}
         >
             <ProgressBar
                 className={isActive ? "active-index" : "" }

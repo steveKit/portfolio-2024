@@ -17,6 +17,7 @@ const TextBlockTitle = ({ title, tag }) => {
 const TitleContainer = styled.div`
     display: flex;
     flex-flow: row wrap;
+    width: 100%;
     justify-content: center;
     margin: 1.5rem 0;
 `

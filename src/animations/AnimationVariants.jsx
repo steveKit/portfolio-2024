@@ -20,7 +20,7 @@ const progressBarVariants = {
 
 const textWrapperVariants = {
     initial: {
-        opacity: 0,
+        opacity: 1,
     },
     animate: {
         opacity: 1,
@@ -37,7 +37,7 @@ const learmMoreButtonVariants = {
     animate: {
         y: 0,    
         transition: {
-            delay: textBlockAnimationInterval + 0.5,
+            delay: (textBlockAnimationInterval / 2) + 0.3,
             duration: (textBlockAnimationInterval / 2),
             type: "tween" },
     },
@@ -54,7 +54,7 @@ const textTopEntryVariants = (delayModifier) => ({
     animate: {
         y: "0%",    
         transition: {
-            delay: (textBlockAnimationInterval + delayModifier),
+            delay: ((textBlockAnimationInterval / 2) + delayModifier),
             duration: ((textBlockAnimationInterval - delayModifier) / 2),
             type: "tween" },
     },
@@ -72,7 +72,7 @@ const textRightEntryVariants = (delayModifier) => ({
     animate: {
         x: "0%",    
         transition: {
-            delay: (textBlockAnimationInterval + delayModifier),
+            delay: ((textBlockAnimationInterval / 2) + delayModifier),
             duration: ((textBlockAnimationInterval - delayModifier) / 2),
             type: "tween" },
     },
@@ -90,7 +90,7 @@ const textBottomEntryVariants = (delayModifier) => ({
     animate: {
         y: "0%",    
         transition: {
-            delay: (textBlockAnimationInterval + delayModifier),
+            delay: ((textBlockAnimationInterval / 2) + delayModifier),
             duration: ((textBlockAnimationInterval - delayModifier) / 2),
             type: "tween" },
     },
@@ -107,7 +107,7 @@ const textLeftEntryVariants = (delayModifier) => ({
     animate: {
         x: "0%",    
         transition: {
-            delay: (textBlockAnimationInterval + delayModifier),
+            delay: ((textBlockAnimationInterval / 2) + delayModifier),
             duration: ((textBlockAnimationInterval - delayModifier) / 2),
             type: "tween" },
     },

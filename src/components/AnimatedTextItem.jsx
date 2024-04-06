@@ -4,7 +4,7 @@ import { textTopEntryVariants, textRightEntryVariants, textBottomEntryVariants, 
 const AnimatedTextItem = ({ content, tag }) => {
     const variants = [textTopEntryVariants, textRightEntryVariants, textBottomEntryVariants, textLeftEntryVariants];
     const randomVariant = variants[Math.floor(Math.random() * variants.length)];
-    const randomDelay = Math.random() * (0.5 - 0.2) + 0.2;
+    const randomDelay = Math.random() * (0.3 - 0.1) + 0.1;
 
     const MotionComponent = tag === "h1" ? motion.h1 : motion.p;
 
