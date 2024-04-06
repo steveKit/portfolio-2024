@@ -5,6 +5,8 @@ import TextBlockBody from "./TextBlockBody";
 import LearnMoreButton from "./LearnMoreButton";
 import { textWrapperVariants } from "../animations/AnimationVariants";
 
+import AnimatedItemContainer from "./AnimatedItemContainer";
+
 const TextBlock = ({title, body, href}) => {
     
     return (
@@ -16,7 +18,7 @@ const TextBlock = ({title, body, href}) => {
         >
             <TextBlockTitle title={title} />
             <TextBlockBody body={body} />
-            <LearnMoreButton href={href} />
+            <AnimatedItemContainer component={LearnMoreButton} href={href} />
         </TextWrapper>  
     )
 };

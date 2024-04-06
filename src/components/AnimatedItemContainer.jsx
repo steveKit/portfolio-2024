@@ -1,9 +1,13 @@
 import styled from "styled-components";
-const AnimatedItemContainer = () => {
+
+//this component is used to hide the overflow of animated elements in TextBlock
+const AnimatedItemContainer = ({ component, content, tag, href }) => {
+    const TagName = component;
+    console.log(content);
 
     return (
         <ItemContainer>
-            <></>
+            <TagName href={href} content={content} tag={tag} />
         </ItemContainer>        
     )
 };
@@ -11,7 +15,8 @@ const AnimatedItemContainer = () => {
 const ItemContainer = styled.div`
     width: fit-content;
     height: fit-content;
-    /* overflow: hidden; */
+    padding: 0.1% 0.7%;
+    overflow: hidden;
 `
 
 export default AnimatedItemContainer;

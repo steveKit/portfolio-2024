@@ -1,7 +1,7 @@
 //timing for new text block in home component
-const intervalDelay = 5;
+const textBlockDisplayInterval = 5;
 
-//animation duration for textblock layout
+//duration textblock layout animation - total length, in + out
 const textBlockAnimationInterval = 0.5;
 
 //do not change values of the timers below --
@@ -10,10 +10,10 @@ const textBlockAnimationInterval = 0.5;
 const animationTimingOffset = textBlockAnimationInterval;
 const progressBarDelay = animationTimingOffset;
 //modified animation duration for progressBarVariant
-const animationInterval = intervalDelay - animationTimingOffset;
+const animationInterval = textBlockDisplayInterval - animationTimingOffset;
 
-//initial header animation delay
-const initialDelay = textBlockAnimationInterval - 0.5;
+//initial header & index indicator animation delay
+const initialDelay = textBlockAnimationInterval + 0.5;
 
 
 
@@ -22,6 +22,6 @@ export {
     animationInterval,
     progressBarDelay,
     initialDelay,
-    intervalDelay,
+    textBlockDisplayInterval,
     animationTimingOffset
 };

@@ -74,20 +74,16 @@ export default createGlobalStyle`
         font-weight: 800;
         font-style: italic;
         color: white;
-        margin: 1rem 0 1.5rem;
 
         @media (max-width: 750px) {
             font-size: 2.5rem;
         }
  
         @media (max-height: 700px) {
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
             font-size: 2.2rem;
         }
 
         @media (max-width: 300px) {
-            margin-top: 1.5rem;
             font-size: 1.8rem;
         }
     }

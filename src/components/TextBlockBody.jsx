@@ -1,17 +1,24 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import AnimatedItemContainer from "./AnimatedItemContainer";
+import AnimatedTextItem from "./AnimatedTextItem";
 
-const TextBlockBody = ({ body }) => {
-    
+const TextBlockTitle = ({ body, tag }) => {
+    const textArray = body.trim().split(" ");
+
     return (
-        <Body>
-            {body}
-        </Body>
+        <TitleContainer>
+            {textArray.map((content, index) => 
+                <AnimatedItemContainer key={content+index} component={AnimatedTextItem} content={content} tag="p" />
+            )}
+        </TitleContainer>
     )
 };
 
-const Body = styled(motion.p)`
-    
+const TitleContainer = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 1.5rem 0;
 `
 
-export default TextBlockBody;
+export default TextBlockTitle;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import TextBlock from "../components/TextBlock";
 import textBlockContent from "../data/TextBlockContent.json"; 
 import TextBlockIndexIndicator from "../components/TextBlockIndexIndicator";
-import { intervalDelay, textBlockAnimationInterval } from "../animations/AnimationTimingVariables";
+import { textBlockDisplayInterval, textBlockAnimationInterval } from "../animations/AnimationTimingVariables";
 import { initialLoadVariants } from "../animations/AnimationVariants";
 
 const Home = () => {
@@ -56,7 +56,7 @@ const Home = () => {
             
             cycleContent();
 
-        }, (intervalDelay * 1000));
+        }, (textBlockDisplayInterval * 1000));
 
         return () => clearInterval(contentChangeInterval);
     }, [currentIndex, userTriggeredContentChange]);

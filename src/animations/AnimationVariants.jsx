@@ -6,7 +6,7 @@ const initialLoadVariants = {
     },
     animate: {
         x: 0,
-        transition: { delay: initialDelay },
+        transition: { delay: initialDelay, stiffness: 100 },
     },
 };
 
@@ -17,18 +17,6 @@ const progressBarVariants = {
         transition: { delay: progressBarDelay, duration: animationInterval, ease: "linear" },
     },
 };
-
-const learnMoreButtonVariants = {
-    initial: { y: -100, opacity: 0 },
-    animate: {
-        y: 0,
-        opacity: 1,
-        transition: {
-            delay: textBlockAnimationInterval,
-            type: "tween" },
-    },
-    exit: { y: -100, opacity: 0 },
-}
 
 const textWrapperVariants = {
     initial: {
@@ -44,9 +32,97 @@ const textWrapperVariants = {
     },
 };
 
+const learmMoreButtonVariants = {
+    initial: { y: -200},
+    animate: {
+        y: 0,    
+        transition: {
+            delay: textBlockAnimationInterval,
+            duration: (textBlockAnimationInterval / 2),
+            type: "tween" },
+    },
+    exit: {
+        y: -200,
+        transition: {
+            duration: (textBlockAnimationInterval / 2),
+            type: "tween" },
+    },
+};
+
+const textTopEntryVariants = (delayModifier) => ({
+    initial: { y: "-200%"},
+    animate: {
+        y: "0%",    
+        transition: {
+            delay: (textBlockAnimationInterval + delayModifier),
+            duration: (textBlockAnimationInterval / 2),
+            type: "tween" },
+    },
+    exit: {
+        y: "200%",
+        transition: {
+            duration: (textBlockAnimationInterval/ 2),
+            type: "tween" },
+    },
+});
+
+const textRightEntryVariants = (delayModifier) => ({
+    initial: { x: "200%"},
+    animate: {
+        x: "0%",    
+        transition: {
+            delay: (textBlockAnimationInterval + delayModifier),
+            duration: (textBlockAnimationInterval / 2),
+            type: "tween" },
+    },
+    exit: {
+        x: "200%",
+        transition: {
+            duration: (textBlockAnimationInterval / 2),
+            type: "tween" },
+    },
+});
+
+const textBottomEntryVariants = (delayModifier) => ({
+    initial: { y: "200%"},
+    animate: {
+        y: "0%",    
+        transition: {
+            delay: (textBlockAnimationInterval + delayModifier),
+            duration: (textBlockAnimationInterval / 2),
+            type: "tween" },
+    },
+    exit: {
+        y: "200%",
+        transition: {
+            duration: (textBlockAnimationInterval / 2),
+            type: "tween" },
+    },
+});
+const textLeftEntryVariants = (delayModifier) => ({
+    initial: { x: "-200%"},
+    animate: {
+        x: "0%",    
+        transition: {
+            delay: (textBlockAnimationInterval + delayModifier),
+            duration: (textBlockAnimationInterval / 2),
+            type: "tween" },
+    },
+    exit: {
+        x: "-200%",
+        transition: {
+            duration: (textBlockAnimationInterval / 2),
+            type: "tween" },
+    },
+});
+
 export {
-    learnMoreButtonVariants,
     initialLoadVariants,
     progressBarVariants,
-    textWrapperVariants
+    textWrapperVariants,
+    learmMoreButtonVariants,
+    textTopEntryVariants,
+    textRightEntryVariants,
+    textLeftEntryVariants,
+    textBottomEntryVariants
 };

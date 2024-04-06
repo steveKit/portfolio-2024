@@ -1,21 +1,19 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { learnMoreButtonVariants } from "../animations/AnimationVariants"; 
+import { learmMoreButtonVariants } from "../animations/AnimationVariants"; 
 
 const LearnMoreButton = ({ href }) => {
     
     return (
-        // <AnimatedItemContainer>
             <Button
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                variants={learnMoreButtonVariants}
+                variants={learmMoreButtonVariants}
                 to={href}
             >
                 Learn More
-            </Button>  
-        // </AnimatedItemContainer>          
+            </Button>         
     )
 };
 
