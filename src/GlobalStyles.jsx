@@ -72,7 +72,6 @@ export default createGlobalStyle`
     h1 {
         font-size: 4rem;
         font-weight: 800;
-        font-style: italic;
         color: white;
 
         @media (max-width: 750px) {

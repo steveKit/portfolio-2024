@@ -18,7 +18,7 @@ const LearnMoreButton = ({ href }) => {
 };
 
 const Button = styled(motion.button)`
-    margin: 2.5rem 0;
+    margin: 2rem 0;
     font-size: 1rem;
     width: 250px;
     max-width: 95%;
@@ -29,10 +29,12 @@ const Button = styled(motion.button)`
 
     @media (max-height: 700px) {
         margin-top: 2rem;
+        margin-bottom: 0;
     }
 
     @media (max-width: 600px) {
         margin-top: 1.3rem;
+        margin-bottom: 0;
         font-size: 0.85rem;
     }
 

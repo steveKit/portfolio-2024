@@ -16,7 +16,7 @@ const LinkItem = ({ title, href, isActive, setIsActive }) => {
         const updateLinkPosition = () => {
             if (linkRef.current) {
                 const newWidth = linkRef.current.offsetWidth;
-                const newTop = linkRef.current.offsetTop + linkRef.current.offsetHeight + (linkRef.current.offsetHeight / 10);
+                const newTop = linkRef.current.offsetTop + linkRef.current.offsetHeight + (linkRef.current.offsetHeight / 20);
 
                 setLinkPosition({ width: newWidth, top: newTop });
             }

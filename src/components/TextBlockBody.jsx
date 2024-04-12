@@ -2,23 +2,28 @@ import styled from "styled-components";
 import AnimatedItemContainer from "./AnimatedItemContainer";
 import AnimatedTextItem from "./AnimatedTextItem";
 
-const TextBlockTitle = ({ body, tag }) => {
+const TextBlockBody = ({ body }) => {
     const textArray = body.trim().split(" ");
 
     return (
-        <TitleContainer>
+        <BodyContainer>
             {textArray.map((content, index) => 
-                <AnimatedItemContainer key={content+index} component={AnimatedTextItem} content={content} tag="p" />
+                <AnimatedItemContainer
+                    key={content+index}
+                    component={AnimatedTextItem}
+                    content={content}
+                    format="word"
+                />
             )}
-        </TitleContainer>
+        </BodyContainer>
     )
 };
 
-const TitleContainer = styled.div`
+const BodyContainer = styled.p`
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
 `
 
-export default TextBlockTitle;
+export default TextBlockBody;
