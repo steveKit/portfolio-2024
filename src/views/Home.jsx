@@ -1,74 +1,43 @@
-import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import TextBlock from "../components/TextBlock";
 import textBlockContent from "../data/TextBlockContent.json"; 
 import TextBlockIndexIndicator from "../components/TextBlockIndexIndicator";
-import { textBlockDisplayInterval, textBlockAnimationInterval } from "../animations/AnimationTimingVariables";
+import { textBlockAnimationInterval } from "../animations/AnimationTimingVariables";
 import { initialLoadVariants } from "../animations/AnimationVariants";
+import useCycleContent from "../custom-hooks/useCycleContent";
+import useBackgroundColor from "../custom-hooks/useBackgroundColor";
+import colorArray from "../data/colorArray";
 
 const Home = () => {
-    const colorArray = [
-        'bg-teal',
-        'bg-yellow',
-        'bg-lavender',
-        'bg-red'
-    ];
+    const [
+            currentText,
+            currentIndex,
+            cycleContent
+        ]
+        = useCycleContent(
+            textBlockContent
+    );
 
-    const [backgroundColor, setBackgroundColor] = useState('bg-teal');
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [currentText, setCurrentText] = useState(textBlockContent[currentIndex]);
-    //for user triggered content cycle in useeffect
-    const [userTriggeredContentChange, setUserTriggeredContentChange] = useState(false);
- 
-    //get different background color from colorArray
-    const getNewColor = () => {
-        let newColor;
-        do {
-            newColor = colorArray[Math.floor(Math.random() * colorArray.length)];
-        } while (newColor === backgroundColor);
-        return newColor;
-    };
-
-    //cycle through textBlockContent
-    const cycleContent = (index) => {
-        const newIndex = index !== undefined ? index : (currentIndex + 1) % textBlockContent.length;
-        setCurrentText(textBlockContent[newIndex]);
-        setBackgroundColor(getNewColor());
-        setCurrentIndex(newIndex);
-    };
+    const [backgroundColor, updateBackGroundColor] = useBackgroundColor("bg-teal", colorArray);
     
     //user triggered change clickHandler
     const indicatorClickHandler = (index) => {
-        setUserTriggeredContentChange(true);
         cycleContent(index);
+        updateBackGroundColor();
     };
-
-
-    useEffect(() => {
-
-        const contentChangeInterval = setInterval(() => {
-            if (userTriggeredContentChange) {
-                setUserTriggeredContentChange(false);
-            }
-            
-            cycleContent();
-
-        }, (textBlockDisplayInterval * 1000));
-
-        return () => clearInterval(contentChangeInterval);
-    }, [currentIndex, userTriggeredContentChange]);
 
     return(
         <HomeWrapper
             animate={{ backgroundColor: `var(--${backgroundColor})`}}
             transition={{ delay: (textBlockAnimationInterval / 2), duration: 0.3 }}
+            exit={{ opacity: 0 }}
             layout="textContentChange"
         >
             <AnimatePresence>
                 {currentText && (
                     <TextBlock
-                        key={currentIndex}
+                        key={"textblock"+currentIndex}
                         title={currentText.title}
                         body={currentText.content}
                         href={currentText.href}
@@ -79,11 +48,12 @@ const Home = () => {
                 <IndicatorsWrapper
                     initial="initial"
                     animate="animate"
+                    exit="exit"
                     variants={initialLoadVariants}
                 >
                     {textBlockContent.map((_, index) => (
                         <TextBlockIndexIndicator
-                            key={index}
+                            key={"indicator"+index}
                             currentIndex={currentIndex}
                             index={index}
                             indicatorClickHandler={indicatorClickHandler}
@@ -98,7 +68,7 @@ const Home = () => {
 const HomeWrapper = styled(motion.section)`
     width: 100vw;
     height: 100vh;
-    opacity: 0.80;
+    opacity: 0.8;
     display: flex;
     flex-direction: column;
     align-items: center;

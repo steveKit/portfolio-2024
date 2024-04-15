@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { textTopEntryVariants, textRightEntryVariants, textBottomEntryVariants, textLeftEntryVariants } from "../animations/AnimationVariants";
 
-const AnimatedTextItem = ({ content, type, format }) => {
+const AnimatedTextItem = ({ content }) => {
     const variants = [textTopEntryVariants, textRightEntryVariants, textBottomEntryVariants, textLeftEntryVariants];
     const randomVariant = variants[Math.floor(Math.random() * variants.length)];
-    const randomDelay = Math.random() * (0.3 - 0.1) + 0.1;
+    const randomDelay = Math.random() * 0.3;
 
     return (
         <AnimatedSpan

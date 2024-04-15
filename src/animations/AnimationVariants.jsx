@@ -2,11 +2,15 @@ import { animationInterval, progressBarDelay, initialDelay, textBlockAnimationIn
 
 const initialLoadVariants = {
     initial: {
-        x: 3000 ,
+        x: 3000,
     },
     animate: {
         x: 0,
-        transition: { delay: initialDelay, stiffness: 100 },
+        transition: { delay: initialDelay, duration: 0.1, stiffness: 100 },
+    },
+    exit: {
+        x: 3000,
+        transition: { duration: 0.1 },
     },
 };
 
@@ -20,11 +24,11 @@ const progressBarVariants = {
 
 const textWrapperVariants = {
     initial: {
-        opacity: 1,
+        opacity: 0,
     },
     animate: {
         opacity: 1,
-        transition: { delay: textBlockAnimationInterval, duration: textBlockAnimationInterval },
+        transition: { delay: (textBlockAnimationInterval / 2), duration: textBlockAnimationInterval },
     },
     exit: {
         opacity: 0,
@@ -38,7 +42,7 @@ const learmMoreButtonVariants = {
         y: 0,    
         transition: {
             delay: (textBlockAnimationInterval / 2) + 0.3,
-            duration: (textBlockAnimationInterval / 2),
+            duration: 0.2,
             type: "tween" },
     },
     exit: {

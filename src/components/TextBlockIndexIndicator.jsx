@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { progressBarVariants } from "../animations/AnimationVariants";
+import { textBlockAnimationInterval } from "../animations/AnimationTimingVariables";
 
 const TextBlockIndexIndicator = ({ index, currentIndex, indicatorClickHandler }) => {
     const isActive = index === currentIndex;
@@ -19,6 +20,7 @@ const TextBlockIndexIndicator = ({ index, currentIndex, indicatorClickHandler })
         <Indicator
             className={isActive ? "active-index" : "" }
             onClick={() => isActive ? null : indicatorClickHandler(index)}
+            duration={textBlockAnimationInterval}
         >
             <ProgressBar
                 className={isActive ? "active-index" : "" }
@@ -31,13 +33,13 @@ const TextBlockIndexIndicator = ({ index, currentIndex, indicatorClickHandler })
 
 const Indicator = styled(motion.button)`
     width: 150px;
-    height: 12px;
+    height: 18px;
     border: none;
     padding: 0;
     margin: 1rem;
     background-color: white;
     opacity: 0.25;
-    transition: all 1000ms ease-out;
+    transition: all ${props => props.duration}s linear;
 
     &.active-index {
         background-color: #00000040;
@@ -46,7 +48,7 @@ const Indicator = styled(motion.button)`
 
     &:hover:not(.active-index) {
         cursor: pointer;
-        opacity: 0.5;
+        opacity: 0.66;
         transition: opacity 300ms;
     }
 

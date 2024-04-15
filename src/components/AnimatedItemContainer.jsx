@@ -9,7 +9,6 @@ const AnimatedItemContainer = ({ component, content, href, format }) => {
             <TagName
                 href={href}
                 content={content}
-                format={format}
             />
         </ItemContainer>        
     )

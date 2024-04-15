@@ -2,9 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { textBlockAnimationInterval } from "../animations/AnimationTimingVariables";
 
 const LinkItem = ({ title, href, isActive, setIsActive }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const activeLink = isActive === title;
     //ref used to resize underline motion.div to the width of active menu item
     const linkRef = useRef(null);
     const [linkPosition, setLinkPosition] = useState({
@@ -43,11 +45,13 @@ const LinkItem = ({ title, href, isActive, setIsActive }) => {
             <StyledLink 
                 ref={linkRef}
                 to={href}
+                delay={(textBlockAnimationInterval / 2)}
+                className={`${isHovered ? "hovered" : ""} ${activeLink ? "active" : ""}`}
                 onTouchStart={() => setIsHovered(true)}
                 onTouchEnd={() => setIsHovered(false)}           
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                onClick={() => isActive === title ? null : setIsActive(title)}
+                onClick={() => activeLink ? null : setIsActive(title)}
             >
                 {title}
             </StyledLink>
@@ -61,7 +65,7 @@ const LinkItem = ({ title, href, isActive, setIsActive }) => {
                     height: '1px',
                     backgroundColor: 'white',
                 }}
-                transition={{ duration: 0.2 }}
+                transition={{ delay: (textBlockAnimationInterval / 2), duration: 0.3 }}
             />
             )}
         </StyledLi>            
@@ -80,8 +84,19 @@ const StyledLi = styled.li`
 `
 
 const StyledLink = styled(Link)`
+    transition: color 200ms ease, opacity 1000ms ease-out;
+    opacity: 1;
 
-    
+    &.hovered:not(.active) {
+        transition: color 200ms ease, opacity 300ms ease;
+        color: black;
+        opacity: 0.4;
+    }
+
+    &.active {
+        transition: color 200ms ease ${props => props.delay}s, opacity 1000ms ease ${props => props.delay}s;
+    }
+
     @media (max-width: 300px) {
         font-size: 0.8rem;
     }
