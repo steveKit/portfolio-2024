@@ -1,29 +1,22 @@
-import { useState } from 'react';
+import colorArray from '../data/colorArray';
+import { useBackgroundColorContext } from '../context/BackgroundColorContext';
 
-const useBackgroundColor = (defaultColor, colorArray) => {
-    const [backgroundColor, setBackgroundColor] = useState(defaultColor);
+const useBackgroundColor = () => {
+    const { backgroundColor, updateBackgroundColor } = useBackgroundColorContext();
 
-    const getNewColor = () => {
+    const newBackgroundColor = (requestedColor) => {
         let newColor;
-        if (!colorArray) {
-            newColor = defaultColor;
-            return newColor;
-        } else {
+        if (!requestedColor) {
             do {
                 newColor = colorArray[Math.floor(Math.random() * colorArray.length)];
-            } while (
-                newColor === backgroundColor
-            );
-            return newColor;
-        };
+            } while (newColor === backgroundColor);
+        } else {
+            newColor = requestedColor;
+        }
+        updateBackgroundColor(newColor);
     };
 
-    const updateBackgroundColor = () => {
-        const newColor = getNewColor();
-        setBackgroundColor(newColor);
-    };
-
-    return [backgroundColor, updateBackgroundColor];
+    return newBackgroundColor;
 };
 
 export default useBackgroundColor;

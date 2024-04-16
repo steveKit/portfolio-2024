@@ -1,5 +1,6 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import { BackgroundColorProvider } from "./context/BackgroundColorContext";
 import GlobalStyles from './GlobalStyles';
 import Header from "./views/Header"
 
@@ -13,7 +14,9 @@ function App() {
       <Suspense >
         <Header />
         <main>
-          <AnimatedRoutes />
+          <BackgroundColorProvider>
+            <AnimatedRoutes />
+          </BackgroundColorProvider>
         </main>
       </Suspense>
     </Router>

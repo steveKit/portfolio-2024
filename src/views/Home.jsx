@@ -6,8 +6,7 @@ import TextBlockIndexIndicator from "../components/TextBlockIndexIndicator";
 import { textBlockAnimationInterval } from "../animations/AnimationTimingVariables";
 import { initialLoadVariants } from "../animations/AnimationVariants";
 import useCycleContent from "../custom-hooks/useCycleContent";
-import useBackgroundColor from "../custom-hooks/useBackgroundColor";
-import colorArray from "../data/colorArray";
+import { useBackgroundColorContext } from "../context/BackgroundColorContext";
 
 const Home = () => {
     const [
@@ -19,12 +18,10 @@ const Home = () => {
             textBlockContent
     );
 
-    const [backgroundColor, updateBackGroundColor] = useBackgroundColor("bg-teal", colorArray);
+    const { backgroundColor } = useBackgroundColorContext();
     
-    //user triggered change clickHandler
     const indicatorClickHandler = (index) => {
         cycleContent(index);
-        updateBackGroundColor();
     };
 
     return(

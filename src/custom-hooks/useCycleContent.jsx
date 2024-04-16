@@ -1,19 +1,17 @@
 import { useState, useEffect } from 'react';
-import { textBlockDisplayInterval } from '../animations/AnimationTimingVariables';
 import useBackgroundColor from './useBackgroundColor';
-import colorArray from '../data/colorArray';
+import { textBlockDisplayInterval } from '../animations/AnimationTimingVariables';
 const useCycledContent = (contentArray) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [backgroundColor, updateBackGroundColor] = useBackgroundColor("bg-teal", colorArray);
+    const newBackgroundColor = useBackgroundColor();
 
     const cycleContent = (index) => {
         const newIndex = index !== undefined ? index : (currentIndex + 1) % contentArray.length;
         setCurrentIndex(newIndex);
-        updateBackGroundColor();
+        newBackgroundColor();
     };
 
     useEffect(() => {
-
         const interval = setInterval(() => {
             cycleContent();
         }, textBlockDisplayInterval * 1000);
