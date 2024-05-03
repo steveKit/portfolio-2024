@@ -1,37 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import useBackgroundColor from "../custom-hooks/useBackgroundColor";
 import styled from "styled-components";
 import LinkItem from "../components/LinkItem";
 import { initialLoadVariants } from "../animations/AnimationVariants";
+import navItems from "../data/navItems";
 const Header = () => {
-    const menuItems = [
-        {
-            title: "HOME",
-            href: "/"
-        },
-        {
-            title: "ABOUT",
-            href: "/about"
-        },
-        {
-            title: "SKILLS",
-            href: "/"
-        },
-        {
-            title: "WORK",
-            href: "/"
-        },
-        {
-            title: "LEARNING",
-            href: "/"
-        },
-        {
-            title: "CONTACT",
-            href: "/"
-        }
-    ];
 
-    const [isActive, setIsActive] = useState('HOME');
+    const [isActive, setIsActive] = useState({
+        title: "HOME",
+        href: "/",
+        bgColor: "--bg-teal"
+    });
+
+    const newBackgroundColor = useBackgroundColor();
+
+    useEffect(() => {
+        const {bgColor} = isActive;
+        newBackgroundColor(bgColor);
+    }, [isActive]);
 
     return(
         <header>
@@ -42,11 +29,10 @@ const Header = () => {
                     animate="animate"
                     variants={initialLoadVariants}
                 >
-                    {menuItems.map((item, index) => (
+                    {navItems.map((item, index) => (
                         <LinkItem
                             key={item.title + index}
-                            title={item.title}
-                            href={item.href}
+                            item={item}
                             isActive={isActive}
                             setIsActive={setIsActive}
                         />

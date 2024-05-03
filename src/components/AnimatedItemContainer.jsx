@@ -6,10 +6,12 @@ const AnimatedItemContainer = ({ component, content, href, format }) => {
 
     return (
         <ItemContainer className={format} >
-            <TagName
-                href={href}
-                content={content}
-            />
+            {TagName && (
+                <TagName
+                    href={href}
+                    content={content}
+                />
+            )}
         </ItemContainer>        
     )
 };

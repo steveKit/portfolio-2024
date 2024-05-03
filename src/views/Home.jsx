@@ -3,8 +3,7 @@ import styled from "styled-components";
 import TextBlock from "../components/TextBlock";
 import textBlockContent from "../data/TextBlockContent.json"; 
 import TextBlockIndexIndicator from "../components/TextBlockIndexIndicator";
-import { textBlockAnimationInterval } from "../animations/AnimationTimingVariables";
-import { initialLoadVariants } from "../animations/AnimationVariants";
+import { initialLoadVariants, backgroundColorVariant } from "../animations/AnimationVariants";
 import useCycleContent from "../custom-hooks/useCycleContent";
 import { useBackgroundColorContext } from "../context/BackgroundColorContext";
 
@@ -19,53 +18,50 @@ const Home = () => {
     );
 
     const { backgroundColor } = useBackgroundColorContext();
-    
+    const homeWrapperVariants = backgroundColorVariant(backgroundColor);
+
     const indicatorClickHandler = (index) => {
         cycleContent(index);
     };
 
     return(
         <HomeWrapper
-            animate={{ backgroundColor: `var(--${backgroundColor})`}}
-            transition={{ delay: (textBlockAnimationInterval / 2), duration: 0.3 }}
-            exit={{ opacity: 0 }}
-            layout="textContentChange"
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={homeWrapperVariants}
         >
             <AnimatePresence>
                 {currentText && (
                     <TextBlock
-                        key={"textblock"+currentIndex}
+                        key={"textblock" + currentIndex}
                         title={currentText.title}
                         body={currentText.content}
                         href={currentText.href}
                     />
                 )}
             </AnimatePresence>
-            <AnimatePresence>
-                <IndicatorsWrapper
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    variants={initialLoadVariants}
-                >
-                    {textBlockContent.map((_, index) => (
-                        <TextBlockIndexIndicator
-                            key={"indicator"+index}
-                            currentIndex={currentIndex}
-                            index={index}
-                            indicatorClickHandler={indicatorClickHandler}
-                        />
-                    ))}
-                </IndicatorsWrapper>
-            </AnimatePresence>
+            <IndicatorsWrapper
+                variants={initialLoadVariants}
+            >
+                {textBlockContent.map((_, index) => (
+                    <TextBlockIndexIndicator
+                        key={"indicator"+index}
+                        currentIndex={currentIndex}
+                        index={index}
+                        indicatorClickHandler={indicatorClickHandler}
+                    />
+                ))}
+            </IndicatorsWrapper>
         </HomeWrapper>
     )
 }
 
-const HomeWrapper = styled(motion.section)`
+const HomeWrapper = styled(motion.div)`
     width: 100vw;
     height: 100vh;
-    opacity: 0.8;
+    opacity: 0.95;
+    background-color: ${props => `var(${props.backgroundColor})`};
     display: flex;
     flex-direction: column;
     align-items: center;

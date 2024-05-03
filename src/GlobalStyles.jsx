@@ -1,25 +1,28 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+
     :root {
         //rotating bg colors
-        --bg-sage-gray: #88a09b;
-        --bg-teal: #3d9e8e;        
+        --bg-teal: #3d9e8e;       
         --bg-yellow: #d8a817;
         --bg-red: #d15342;
-        --bg-dull-green: #898f78;
-        --bg-brown: #70564a;
-        --bg-lavender: #8e9fac;
+        --bg-cadet-gray: #8da1b9;
+        
+        /* --bg-moss-green: #8ba353; */
+        /* --bg-jet: #333333; */
+        /* --bg-dune: #9e9e9e; */
+        /* --bg-old-gold: #b2a635; */
+        /* --bg-sage-gray: #88a09b; */
 
-        /* --bg-olive: #7f8169; */
-        /* --bg-sage: #92a27e; */
-        /* --bg-mauve: #684a43; */
-        /* --bg-blue: #2f425e; */
+        --bg-timberwolf: #a9a9a9;
+        --bg-silver: #9d9d9d;
+        --bg-battleship: #919191;
+        --bg-dim-gray: #868686;
+        --bg-graphite: #6e6e6e;
 
-        --off-white: #eff5ef;
-        --gray: #76706a;
-        --text-gray: #1f1f1f;
-        --midnight-blue: rgb(35, 35, 38);     
+        /* --off-white: #eff5ef; */
+        --text-gray: #1f1f1f;    
         
         cursor: default;
         
@@ -77,7 +80,7 @@ export default createGlobalStyle`
         @media (max-width: 750px) {
             font-size: 2.5rem;
         }
- 
+
         @media (max-height: 700px) {
             font-size: 2.2rem;
         }

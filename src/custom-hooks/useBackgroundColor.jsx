@@ -4,16 +4,25 @@ import { useBackgroundColorContext } from '../context/BackgroundColorContext';
 const useBackgroundColor = () => {
     const { backgroundColor, updateBackgroundColor } = useBackgroundColorContext();
 
-    const newBackgroundColor = (requestedColor) => {
+    const changeColorRandomly = () => {
         let newColor;
-        if (!requestedColor) {
-            do {
-                newColor = colorArray[Math.floor(Math.random() * colorArray.length)];
-            } while (newColor === backgroundColor);
-        } else {
-            newColor = requestedColor;
-        }
+        do {
+            newColor = `var(${colorArray[Math.floor(Math.random() * colorArray.length)]})`;
+        } while (newColor === backgroundColor);
         updateBackgroundColor(newColor);
+    };
+
+    const changeToRequestedColor = (requestedColor) => {
+        const newColor = requestedColor || '--bg-teal';
+        updateBackgroundColor(`var(${newColor})`);
+    };
+
+    const newBackgroundColor = (requestedColor) => {
+        if (!requestedColor) {
+            changeColorRandomly();
+        } else {
+            return changeToRequestedColor(requestedColor);
+        }
     };
 
     return newBackgroundColor;

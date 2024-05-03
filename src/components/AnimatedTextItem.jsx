@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { textTopEntryVariants, textRightEntryVariants, textBottomEntryVariants, textLeftEntryVariants } from "../animations/AnimationVariants";
 
 const AnimatedTextItem = ({ content }) => {
@@ -9,10 +9,10 @@ const AnimatedTextItem = ({ content }) => {
 
     return (
         <AnimatedSpan
-            variants={randomVariant(randomDelay)}
             initial="initial"
             animate="animate"
             exit="exit"
+            variants={randomVariant(randomDelay)}
         >
             {content} 
         </AnimatedSpan>

@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { textBlockAnimationInterval } from "../animations/AnimationTimingVariables";
 
-const LinkItem = ({ title, href, isActive, setIsActive }) => {
+const LinkItem = ({ item, isActive, setIsActive }) => {
+    const {title, href} = item;
     const [isHovered, setIsHovered] = useState(false);
-    const activeLink = isActive === title;
+    const activeLink = isActive.title === title;
+
     //ref used to resize underline motion.div to the width of active menu item
     const linkRef = useRef(null);
     const [linkPosition, setLinkPosition] = useState({
@@ -14,16 +16,16 @@ const LinkItem = ({ title, href, isActive, setIsActive }) => {
         top: null,
     });
 
+    const updateLinkPosition = () => {
+        if (linkRef.current) {
+            const newWidth = linkRef.current.offsetWidth;
+            const newTop = linkRef.current.offsetTop + linkRef.current.offsetHeight + (linkRef.current.offsetHeight / 20);
+
+            setLinkPosition({ width: newWidth, top: newTop });
+        }
+    };
+    
     useEffect(() => {
-        const updateLinkPosition = () => {
-            if (linkRef.current) {
-                const newWidth = linkRef.current.offsetWidth;
-                const newTop = linkRef.current.offsetTop + linkRef.current.offsetHeight + (linkRef.current.offsetHeight / 20);
-
-                setLinkPosition({ width: newWidth, top: newTop });
-            }
-        };
-
         updateLinkPosition();
         const resizeObserver = new ResizeObserver(updateLinkPosition);
         if (linkRef.current) {
@@ -51,11 +53,11 @@ const LinkItem = ({ title, href, isActive, setIsActive }) => {
                 onTouchEnd={() => setIsHovered(false)}           
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                onClick={() => activeLink ? null : setIsActive(title)}
+                onClick={() => activeLink ? null : setIsActive(item)}
             >
                 {title}
             </StyledLink>
-            {isActive === title && (
+            {isActive.title === title && (
                 <motion.div
                 layoutId='underline'
                 style={{

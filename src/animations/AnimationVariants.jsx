@@ -6,33 +6,41 @@ const initialLoadVariants = {
     },
     animate: {
         x: 0,
-        transition: { delay: initialDelay, duration: 0.1, stiffness: 100 },
+        transition: { delay: initialDelay, duration: 0.2 },
     },
     exit: {
         x: 3000,
-        transition: { duration: 0.1 },
+        transition: { delay: 0.2 },
     },
 };
+
+const backgroundColorVariant = (backgroundColor) => ({
+    initial: { backgroundColor },
+    animate: {
+        backgroundColor,
+        transition: { delay: (textBlockAnimationInterval / 2), duration: 0.3 }
+    },
+    exit: {
+            backgroundColor,
+            transition: { delay: (textBlockAnimationInterval / 2), duration: 0.3 }
+    },
+});
 
 const progressBarVariants = {
     initial: { width: "0%" },
     animate: {
         width: "100%",
-        transition: { delay: progressBarDelay, duration: animationInterval, ease: "linear" },
+        transition: { delay: progressBarDelay, duration: animationInterval - 0.15, ease: "linear" },
     },
 };
 
 const textWrapperVariants = {
     initial: {
-        opacity: 0,
-    },
-    animate: {
         opacity: 1,
-        transition: { delay: (textBlockAnimationInterval / 2), duration: textBlockAnimationInterval },
     },
     exit: {
         opacity: 0,
-        transition: {duration: textBlockAnimationInterval },
+        transition: { delay: 0.1 },
     },
 };
 
@@ -43,13 +51,13 @@ const learmMoreButtonVariants = {
         transition: {
             delay: (textBlockAnimationInterval / 2) + 0.3,
             duration: 0.2,
-            type: "tween" },
+        },
     },
     exit: {
         y: -200,
         transition: {
-            duration: (textBlockAnimationInterval / 2),
-            type: "tween" },
+            delay: (textBlockAnimationInterval / 2) - 0.2,
+        },
     },
 };
 
@@ -59,15 +67,15 @@ const textTopEntryVariants = (delayModifier) => ({
         y: "0%",    
         transition: {
             delay: ((textBlockAnimationInterval / 2) + delayModifier),
-            duration: ((textBlockAnimationInterval - delayModifier) / 2),
-            type: "tween" },
+            duration: ((textBlockAnimationInterval - delayModifier) / 2)
+        },
     },
     exit: {
         y: "200%",
         transition: {
             delay: delayModifier,
-            duration: (textBlockAnimationInterval/ 2),
-            type: "tween" },
+            duration: (textBlockAnimationInterval/ 2)
+        },
     },
 });
 
@@ -77,15 +85,15 @@ const textRightEntryVariants = (delayModifier) => ({
         x: "0%",    
         transition: {
             delay: ((textBlockAnimationInterval / 2) + delayModifier),
-            duration: ((textBlockAnimationInterval - delayModifier) / 2),
-            type: "tween" },
+            duration: ((textBlockAnimationInterval - delayModifier) / 2)
+        },
     },
     exit: {
         x: "200%",
         transition: {
             delay: delayModifier,
-            duration: (textBlockAnimationInterval / 2),
-            type: "tween" },
+            duration: (textBlockAnimationInterval / 2)
+        },
     },
 });
 
@@ -95,15 +103,15 @@ const textBottomEntryVariants = (delayModifier) => ({
         y: "0%",    
         transition: {
             delay: ((textBlockAnimationInterval / 2) + delayModifier),
-            duration: ((textBlockAnimationInterval - delayModifier) / 2),
-            type: "tween" },
+            duration: ((textBlockAnimationInterval - delayModifier) / 2)
+        },
     },
     exit: {
         y: "200%",
         transition: {
             delay: delayModifier,
-            duration: (textBlockAnimationInterval / 2),
-            type: "tween" },
+            duration: (textBlockAnimationInterval / 2)
+        },
     },
 });
 const textLeftEntryVariants = (delayModifier) => ({
@@ -112,20 +120,21 @@ const textLeftEntryVariants = (delayModifier) => ({
         x: "0%",    
         transition: {
             delay: ((textBlockAnimationInterval / 2) + delayModifier),
-            duration: ((textBlockAnimationInterval - delayModifier) / 2),
-            type: "tween" },
+            duration: ((textBlockAnimationInterval - delayModifier) / 2)
+        },
     },
     exit: {
         x: "-200%",
         transition: {
             delay: delayModifier,
-            duration: (textBlockAnimationInterval / 2),
-            type: "tween" },
+            duration: (textBlockAnimationInterval / 2)
+        },
     },
 });
 
 export {
     initialLoadVariants,
+    backgroundColorVariant,
     progressBarVariants,
     textWrapperVariants,
     learmMoreButtonVariants,

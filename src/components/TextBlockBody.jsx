@@ -9,7 +9,7 @@ const TextBlockBody = ({ body }) => {
         <BodyContainer>
             {textArray.map((word, index) => 
                 <AnimatedItemContainer
-                    key={word+index}
+                    key={"bodyWord" + word + index}
                     component={AnimatedTextItem}
                     content={word}
                     format="word"

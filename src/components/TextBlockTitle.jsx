@@ -9,11 +9,11 @@ const TextBlockTitle = ({ title }) => {
         <TitleContainer>
             {textArray.map((word, wordIndex) => 
                 <Word
-                    key={`${word}${wordIndex}`}
+                    key={"titleWord" + word + wordIndex}
                 >
                     {[...word].map((letter, letterIndex) =>
                         <AnimatedItemContainer
-                            key={`${letter}${letterIndex}`}
+                            key={"titleLetter" + letter + letterIndex}
                             component={AnimatedTextItem}
                             content={letter}
                             format="letter"

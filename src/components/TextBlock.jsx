@@ -10,12 +10,10 @@ import AnimatedItemContainer from "./AnimatedItemContainer";
 const TextBlock = ({title, body, href}) => {
     
     return (
-        <TextWrapper
-            initial="initial"
-            animate="animate"
-            exit="exit"
+        <TextWrapper  
             variants={textWrapperVariants}
         >
+            
             <TextBlockTitle title={title} />
             <TextBlockBody body={body} />
             <AnimatedItemContainer component={LearnMoreButton} href={href} />

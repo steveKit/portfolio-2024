@@ -11,7 +11,7 @@ const progressBarDelay = animationTimingOffset + 0.1;
 const animationInterval = textBlockDisplayInterval - animationTimingOffset;
 
 //initial header & index indicator animation delay
-const initialDelay = (textBlockAnimationInterval / 2) + 0.5;
+const initialDelay = (textBlockAnimationInterval / 2) + 0.2;
 
 export {
     textBlockAnimationInterval,
